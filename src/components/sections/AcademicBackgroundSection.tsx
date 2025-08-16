@@ -10,7 +10,7 @@ import SectionTitle from '../ui/SectionTitle';
 const experienceData = [
   {
     company: 'ENCODERSPRO PRIVATE LIMITED',
-    logoUrl: 'https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/master/assets/en.png',
+    logoUrl: 'https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/main/assets/en.png',
     logoHint: 'Encoderspro logo',
     role: 'Cyber Security Intern',
     type: 'Internship',

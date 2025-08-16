@@ -13,10 +13,10 @@ const projects = [
   {
     title: 'Portfolio Website',
     description: 'A personal portfolio built with Next.js, Tailwind CSS. Developed using Firebase Studio AI.',
-    image: 'https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/master/assets/portfolio.png', 
+    image: 'https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/main/assets/portfolio.png', 
     imageHint: 'portfolio project', 
-    tags: ['Next.js', 'React', 'Tailwind CSS', 'Firebase', 'TypeScript'],
-    githubLink: 'https://github.com/rootsecops/CyberFolio',
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
+    githubLink: 'https://github.com/rootsecops/rootsecops',
     demoLink: '/', 
   },
   {

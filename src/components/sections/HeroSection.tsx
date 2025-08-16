@@ -26,7 +26,7 @@ export default function HeroSection() {
             <div className="flex-shrink-0">
                 <div className="relative w-36 h-36 md:w-48 md:h-48 border-2 border-foreground bg-foreground p-1">
                     <Image
-                        src="https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/master/assets/Nongstoin_crop-pfp.jpg"
+                        src="https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/main/assets/Nongstoin_crop-pfp.jpg"
                         alt="Sonajit Rabha profile picture"
                         data-ai-hint="profile picture"
                         width={200}
