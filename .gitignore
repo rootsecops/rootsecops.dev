@@ -1,0 +1,5 @@
+.env
+.next
+.idx
+node_modules
+docs
