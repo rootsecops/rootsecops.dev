@@ -57,7 +57,7 @@ export default function AcademicBackgroundSection() {
     <section id="academic-background" className="py-4 md:py-8">
       <div className="container mx-auto px-4">
         <SectionTitle
-          tagText="Background"
+          tagText="Academic-Background"
           title="Experience & Education"
           description="My professional journey and academic background."
         />
