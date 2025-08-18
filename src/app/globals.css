@@ -127,26 +127,4 @@
   .glass-card {
     @apply bg-card/80 border border-border/60 backdrop-blur-md transition-all rounded-lg dark:bg-card/80;
   }
-  .tool-card {
-    @apply bg-card/60 border border-border/40 rounded-lg shadow-lg transition-all duration-300 ease-in-out;
-    @apply hover:bg-card/90 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl hover:-translate-y-1;
-  }
-  .tool-icon {
-    @apply text-primary transition-colors duration-300;
-  }
-  .tool-card:hover .tool-icon {
-    @apply text-primary;
-  }
-  .tool-badge {
-    @apply inline-block mt-3 px-3 py-1 text-xs font-pixel uppercase tracking-widest rounded-full border-2;
-  }
-  .tool-badge-advanced {
-    @apply bg-accent/10 border-accent text-accent;
-  }
-  .tool-badge-intermediate {
-    @apply bg-yellow-500/10 border-yellow-500 text-yellow-500;
-  }
-  .tool-badge-learning {
-    @apply bg-red-500/10 border-red-500 text-red-500;
-  }
 }
