@@ -19,12 +19,20 @@ export default function SkillCard({ icon: Icon, name, category, proficiency }: S
 
   return (
     <div className="tool-card">
-      <div className={`tool-badge ${badgeClass}`}>
-        {proficiency}
+      <div className="flex items-center gap-4 mb-4 w-full">
+        <div className="flex-shrink-0">
+           <Icon className="w-8 h-8 tool-icon" />
+        </div>
+        <div className="flex flex-col flex-grow">
+            <h4 className="font-semibold text-base text-primary leading-tight">{name}</h4>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">{category}</p>
+        </div>
       </div>
-      <Icon className="w-12 h-12 mb-4 tool-icon" />
-      <h4 className="font-bold text-lg text-foreground">{name}</h4>
-      <p className="text-sm text-muted-foreground">{category}</p>
+      <div className="self-start">
+        <div className={`tool-badge ${badgeClass}`}>
+          {proficiency}
+        </div>
+      </div>
     </div>
   );
 }
