@@ -11,13 +11,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { href: '#about', label: 'About Me', id: 'about' },
-  { href: '/projects', label: 'Projects', id: 'projects' },
-  { href: '/blogs', label: 'Blog', id: 'blogs' },
   { href: '#skills', label: 'Skills', id: 'skills' },
+  { href: '/projects', label: 'Projects', id: 'projects' },
   { href: '#academic-background', label: 'Experience', id: 'academic-background' },
+  { href: '/blogs', label: 'Blog', id: 'blogs' },
 ];
 
-const homepageSectionIds = ['home', 'about', 'projects', 'blogs', 'skills', 'academic-background', 'contact'];
+const homepageSectionIds = ['home', 'about', 'skills', 'projects', 'academic-background', 'blogs', 'contact'];
 
 // --- Variants for animations ---
 const mobileMenuVariants = {

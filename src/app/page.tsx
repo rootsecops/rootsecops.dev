@@ -46,22 +46,22 @@ export default function HomePage() {
       </Section>
       <Section>
         <Suspense fallback={<SectionSkeleton />}>
-          <ProjectsSection isHomePage />
-        </Suspense>
-      </Section>
-       <Section>
-        <Suspense fallback={<SectionSkeleton />}>
-          <BlogSection isHomePage />
-        </Suspense>
-      </Section>
-      <Section>
-        <Suspense fallback={<SectionSkeleton />}>
           <SkillsSection />
         </Suspense>
       </Section>
       <Section>
         <Suspense fallback={<SectionSkeleton />}>
+          <ProjectsSection isHomePage />
+        </Suspense>
+      </Section>
+      <Section>
+        <Suspense fallback={<SectionSkeleton />}>
           <AcademicBackgroundSection />
+        </Suspense>
+      </Section>
+       <Section>
+        <Suspense fallback={<SectionSkeleton />}>
+          <BlogSection isHomePage />
         </Suspense>
       </Section>
       <Section isLast>
