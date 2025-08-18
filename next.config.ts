@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.shields.io',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
