@@ -111,14 +111,11 @@
   .glass-card {
     @apply bg-card/80 border border-border/60 backdrop-blur-md transition-all rounded-lg dark:bg-card/80;
   }
-  .header-blur {
-    @apply fixed top-0 left-0 right-0 h-24 z-40 transition-opacity duration-300 pointer-events-none opacity-0;
+  /* New style for the scrolled state */
+  body.is-scrolled main {
+    @apply before:content-[''] before:fixed before:inset-x-0 before:top-0 before:h-24 before:z-40 before:pointer-events-none;
+    @apply before:transition-opacity before:duration-300;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
-  .header-blur-active {
-    @apply opacity-100;
   }
 }

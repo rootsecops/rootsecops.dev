@@ -21,16 +21,22 @@ export default function AppLayout({ children }: AppLayoutProps) {
     window.scrollTo(0, 0);
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrolled = window.scrollY > 10;
+      setIsScrolled(scrolled);
+      // Toggle a class on the body
+      document.body.classList.toggle('is-scrolled', scrolled);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+        // Clean up class on unmount
+        document.body.classList.remove('is-scrolled');
+    }
   }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <div className={cn("header-blur", { "header-blur-active": isScrolled })} />
       <Navbar isScrolled={isScrolled} />
       <main className="flex-grow container mx-auto px-4 pt-20 pb-8 z-10">
         {children}
