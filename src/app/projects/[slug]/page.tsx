@@ -74,23 +74,9 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         </div>
       </header>
       
-      {project.image && (
-          <div className="relative w-full h-96 my-8 rounded-lg border border-border overflow-hidden">
-              <Image
-                  src={project.image}
-                  alt={project.title}
-                  data-ai-hint={project.imageHint}
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  className="bg-muted"
-                  sizes="(max-width: 768px) 100vw, 70vw"
-              />
-          </div>
-      )}
-
       <hr className="my-8 border-border" />
 
-      <div className="prose prose-invert max-w-none prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
+      <div className="prose prose-invert max-w-none prose-p:has-[>img]:flex prose-p:has-[>img]:flex-col prose-p:has-[>img]:gap-2 prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>
             {project.content}
         </ReactMarkdown>
