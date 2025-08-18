@@ -16,15 +16,15 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const project = await getProjectBySlug(params.slug);
-  if (!project) {
+  const post = await getPostBySlug(params.slug);
+  if (!post) {
     return {
       title: 'Project Not Found',
     };
   }
   return {
-    title: `${project.title} | Projects`,
-    description: project.description,
+    title: `${post.title} | Projects`,
+    description: post.description,
   };
 }
 
