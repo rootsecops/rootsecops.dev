@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -16,7 +17,6 @@ const allSkills: SkillCardProps[] = [
   // Expert
   { icon: SiLinux, name: "Linux", category: "Operating System", proficiency: "Expert" },
   { icon: SiKalilinux, name: "Kali Linux", category: "Security OS", proficiency: "Expert" },
-  { icon: SiGnubash, name: "Bash", category: "Scripting", proficiency: "Expert" },
   { icon: SiGithub, name: "GitHub", category: "Version Control", proficiency: "Expert" },
   { icon: SiGit, name: "Git", category: "Version Control", proficiency: "Expert" },
   // Intermediate
@@ -26,6 +26,7 @@ const allSkills: SkillCardProps[] = [
   { icon: SiVercel, name: "Vercel", category: "Deployment", proficiency: "Intermediate" },
   { icon: SiWireshark, name: "Wireshark", category: "Packet Analysis", proficiency: "Intermediate" },
   // Beginner
+  { icon: SiGnubash, name: "Bash", category: "Scripting", proficiency: "Beginner" },
   { icon: SiReact, name: "React", category: "UI Library", proficiency: "Beginner" },
   { icon: SiTailwindcss, name: "Tailwind CSS", category: "CSS Framework", proficiency: "Beginner" },
   { icon: SiBurpsuite, name: "Burp Suite", category: "Web Security", proficiency: "Beginner" },
