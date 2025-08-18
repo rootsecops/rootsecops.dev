@@ -26,6 +26,8 @@ Here's how it worked:
 2.  **Code Generation:** The AI assistant translated these requests into production-quality code for Next.js and React components.
 3.  **Iteration and Refinement:** I guided the AI to fix bugs, add new features (like the blog you're reading), and refine the UI, creating a collaborative development loop.
 
+![A screenshot of the portfolio website homepage](https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/main/assets/portfolio.png)
+
 ## The GitHub-Based Blog (Headless CMS)
 
 One of the most powerful features of this site is how content is managed. Instead of a traditional, complex Content Management System (CMS), this blog uses a simple yet effective approach:
