@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from 'framer-motion';
@@ -13,23 +12,20 @@ import {
   SiReact, SiNextdotjs, SiTailwindcss, SiVercel, SiGithub, SiGit
 } from 'react-icons/si';
 
-const expertSkills: SkillCardProps[] = [
+const allSkills: SkillCardProps[] = [
+  // Expert
   { icon: SiLinux, name: "Linux", category: "Operating System", proficiency: "Expert" },
   { icon: SiKalilinux, name: "Kali Linux", category: "Security OS", proficiency: "Expert" },
   { icon: SiGnubash, name: "Bash", category: "Scripting", proficiency: "Expert" },
   { icon: SiGithub, name: "GitHub", category: "Version Control", proficiency: "Expert" },
   { icon: SiGit, name: "Git", category: "Version Control", proficiency: "Expert" },
-];
-
-const intermediateSkills: SkillCardProps[] = [
+  // Intermediate
   { icon: SiPython, name: "Python", category: "Programming", proficiency: "Intermediate" },
   { icon: SiCplusplus, name: "C++", category: "Programming", proficiency: "Intermediate" },
   { icon: SiNextdotjs, name: "Next.js", category: "Web Framework", proficiency: "Intermediate" },
   { icon: SiVercel, name: "Vercel", category: "Deployment", proficiency: "Intermediate" },
   { icon: SiWireshark, name: "Wireshark", category: "Packet Analysis", proficiency: "Intermediate" },
-];
-
-const beginnerSkills: SkillCardProps[] = [
+  // Beginner
   { icon: SiReact, name: "React", category: "UI Library", proficiency: "Beginner" },
   { icon: SiTailwindcss, name: "Tailwind CSS", category: "CSS Framework", proficiency: "Beginner" },
   { icon: SiBurpsuite, name: "Burp Suite", category: "Web Security", proficiency: "Beginner" },
@@ -42,31 +38,15 @@ const sectionVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const SkillCategory = ({ title, skills, speed = 40, direction = "left" }: { title: string, skills: SkillCardProps[], speed?: number, direction?: "left" | "right" }) => {
-    const skillNodes = skills.map((skill, index) => ({
-        node: <SkillCard key={`${skill.name}-${index}`} {...skill} />
-    }));
-  
-    return (
-        <div className="py-6">
-            <h3 className="text-xl font-bold text-center text-primary mb-4 font-pixel">{title}</h3>
-            <LogoLoop
-                logos={skillNodes}
-                speed={speed}
-                direction={direction}
-                gap={40}
-                pauseOnHover
-            />
-        </div>
-    );
-};
-
-
 export default function SkillsSection() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const skillNodes = allSkills.map((skill, index) => ({
+      node: <SkillCard key={`${skill.name}-${index}`} {...skill} />
+  }));
 
   return (
     <motion.section
@@ -84,10 +64,14 @@ export default function SkillsSection() {
           description="A selection of the tools I use for security assessments and operations."
         />
         
-        <div className="space-y-4">
-          <SkillCategory title="Expert" skills={expertSkills} speed={30} direction="left" />
-          <SkillCategory title="Intermediate" skills={intermediateSkills} speed={40} direction="right" />
-          <SkillCategory title="Beginner" skills={beginnerSkills} speed={30} direction="left" />
+        <div className="py-6">
+           <LogoLoop
+                logos={skillNodes}
+                speed={40}
+                direction="left"
+                gap={40}
+                pauseOnHover
+            />
         </div>
       </div>
     </motion.section>
