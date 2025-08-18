@@ -76,7 +76,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       
       <hr className="my-8 border-border" />
 
-      <div className="prose prose-invert max-w-none prose-p:has-[>img]:flex prose-p:has-[>img]:flex-wrap prose-p:has-[>img]:gap-2 prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
+      <div className="prose prose-invert max-w-none prose-p:has-[>img]:flex prose-p:has-[>img]:flex-wrap prose-p:has-[>img]:gap-2 prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground prose-table:border-border prose-th:text-primary prose-tr:border-border prose-td:border-border">
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>
             {project.content}
         </ReactMarkdown>
