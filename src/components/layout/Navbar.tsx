@@ -153,9 +153,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
         <div className="max-w-5xl mx-auto">
           <nav className={cn(
               "relative flex items-center justify-between w-full rounded-full p-4 transition-all duration-300",
-              isScrolled 
-                ? "bg-background/80 border border-border/20 shadow-sm backdrop-blur-lg" 
-                : "bg-transparent border-transparent"
+              "bg-background/80 border border-border/20 shadow-sm backdrop-blur-lg"
             )}>
             <Link href="/" className="flex items-center pl-3">
                <Image
