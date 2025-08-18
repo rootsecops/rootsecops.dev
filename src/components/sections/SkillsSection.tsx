@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -17,7 +18,7 @@ const allSkills: SkillCardProps[] = [
   // Intermediate
   { icon: SiPython, name: "Python", category: "Programming", proficiency: "Intermediate" },
   { icon: SiCplusplus, name: "C++", category: "Programming", proficiency: "Intermediate" },
-  { icon: SiWireshark, name: "Wireshark", category: "Packet Analysis", proficiency: "Intermediate" },
+  { icon: SiWireshark, name: "Wireshark", category: "Network Analysis", proficiency: "Intermediate" },
   // Beginner
   { icon: SiGnubash, name: "Bash", category: "Scripting", proficiency: "Beginner" },
   { icon: SiBurpsuite, name: "Burp Suite", category: "Web Security", proficiency: "Beginner" },
