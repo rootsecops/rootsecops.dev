@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import SectionTitle from '@/components/ui/SectionTitle';
-import { ArrowRight, Linkedin, Github } from 'lucide-react';
+import { ArrowRight, Linkedin, Github, Twitter } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -142,6 +142,14 @@ export default function ContactSection() {
                       </div>
                       <div>
                           <p className="font-semibold text-foreground">GitHub</p>
+                      </div>
+                  </Link>
+                  <Link href="https://x.com/RootSecOps" target="_blank" rel="noopener noreferrer" className="flex items-center group p-3 rounded-md hover:bg-muted transition-colors">
+                      <div className="flex-shrink-0 bg-primary/10 p-3 rounded-full mr-4 group-hover:bg-primary/20 transition-colors">
+                          <Twitter className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                          <p className="font-semibold text-foreground">Twitter</p>
                       </div>
                   </Link>
               </CardContent>
