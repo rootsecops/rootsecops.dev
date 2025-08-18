@@ -1,4 +1,3 @@
-
 "use client";
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -74,7 +73,7 @@ export default function SkillsSection() {
     >
       <div className="container mx-auto px-4">
         <SectionTitle
-            tagText="Toolbox"
+            tagText="Skills"
             title="Technical Proficiency"
             description="A showcase of my technical abilities and tool proficiencies in cybersecurity."
         />
