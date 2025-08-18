@@ -6,7 +6,7 @@ import SectionTitle from '../ui/SectionTitle';
 import LogoLoop from '../ui/LogoLoop';
 import { 
   SiLinux, SiKalilinux, SiGnubash, SiPython, SiCplusplus, 
-  SiWireshark, SiBurpsuite, SiNmap, SiMetasploit,
+  SiWireshark, SiBurpsuite, SiMetasploit,
   SiReact, SiNextdotjs, SiTailwindcss, SiVercel, SiGithub, SiGit
 } from 'react-icons/si';
 
@@ -26,7 +26,6 @@ const intermediateLogos = [
 
 const beginnerLogos = [
   { node: <SiBurpsuite />, title: "Burp Suite", href: "https://portswigger.net/burp" },
-  { node: <SiNmap />, title: "Nmap", href: "https://nmap.org/" },
   { node: <SiMetasploit />, title: "Metasploit", href: "https://www.metasploit.com/" },
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
