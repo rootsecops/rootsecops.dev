@@ -219,8 +219,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
                 initial="closed"
                 animate={isMobileMenuOpen ? 'open' : 'closed'}
               >
-                  <motion.svg width="24" height="24" viewBox="0 0 24 24" overflow="visible" preserveAspectRatio="none"
-                  initial="closed">
+                  <motion.svg width="24" height="24" viewBox="0 0 24 24" overflow="visible" preserveAspectRatio="none">
                       <motion.path {...hamburgerLineProps} variants={{ closed: { d: "M 2 4 L 22 4" }, open: { d: "M 4 20 L 20 4" } }} />
                       <motion.path d="M 2 12 L 22 12" {...hamburgerLineProps} variants={{ closed: { opacity: 1 }, open: { opacity: 0 } }} transition={{ duration: 0.1 }} />
                       <motion.path {...hamburgerLineProps} variants={{ closed: { d: "M 2 20 L 22 20" }, open: { d: "M 4 4 L 20 20" } }} />
