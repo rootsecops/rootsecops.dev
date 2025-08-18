@@ -80,6 +80,13 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  .dark body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 50% 30% at 30% -10%, hsl(var(--accent) / 0.1), transparent),
+      radial-gradient(ellipse 50% 30% at 70% -5%, hsl(var(--primary) / 0.08), transparent);
+    background-repeat: no-repeat;
+  }
 }
 
 @layer components {
