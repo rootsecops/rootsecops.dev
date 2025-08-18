@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from 'framer-motion';
@@ -13,9 +12,8 @@ import {
 } from 'react-icons/si';
 
 const allSkills: SkillCardProps[] = [
-  // Expert
-  { icon: SiLinux, name: "Linux", category: "Operating System", proficiency: "Expert" },
   // Intermediate
+  { icon: SiLinux, name: "Linux", category: "Operating System", proficiency: "Intermediate" },
   { icon: SiPython, name: "Python", category: "Programming", proficiency: "Intermediate" },
   { icon: SiCplusplus, name: "C++", category: "Programming", proficiency: "Intermediate" },
   { icon: SiWireshark, name: "Wireshark", category: "Network Analysis", proficiency: "Intermediate" },
