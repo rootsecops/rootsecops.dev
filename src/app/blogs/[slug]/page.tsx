@@ -1,8 +1,9 @@
-import { getPostBySlug, getAllPosts, BlogPost } from '@/lib/blogs';
+import { getPostBySlug, getAllPosts } from '@/lib/blogs';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { Calendar, Tag } from 'lucide-react';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -23,6 +24,23 @@ export async function generateMetadata({ params }: { params: { slug:string } }) 
     description: post.excerpt,
   };
 }
+
+// Custom component for rendering images with Next.js Image optimization
+const MarkdownImage = (props: any) => {
+    return (
+        <div className="relative my-6 w-full h-96">
+             <Image
+                src={props.src}
+                alt={props.alt}
+                fill
+                style={{ objectFit: 'contain' }}
+                className="rounded-lg border border-border"
+                sizes="(max-width: 768px) 100vw, 70vw"
+             />
+        </div>
+    );
+};
+
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(params.slug);
@@ -50,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </header>
 
       <div className="prose prose-invert max-w-none prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <ReactMarkdown components={{ img: MarkdownImage }}>{post.content}</ReactMarkdown>
       </div>
     </article>
   );
