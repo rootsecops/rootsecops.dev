@@ -1,4 +1,3 @@
-
 "use client";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -127,8 +126,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex-1 flex flex-wrap gap-3">
+                  <CardFooter className="mt-auto pt-4 flex w-full flex-wrap items-center justify-start gap-3">
                       {project.githubLink && (
                           <Button variant="outline" size="sm" asChild>
                             <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
@@ -143,14 +141,11 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                           </Link>
                         </Button>
                       )}
-                    </div>
-                     <div className="flex justify-end">
                        <Button variant="outline" size="sm" asChild>
                           <Link href={`/projects/${project.slug}`}>
                             Read More <BookOpen className="ml-2 h-4 w-4" />
                           </Link>
                         </Button>
-                    </div>
                   </CardFooter>
                 </Card>
               </motion.div>
