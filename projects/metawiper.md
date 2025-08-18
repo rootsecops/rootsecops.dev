@@ -9,6 +9,11 @@ githubLink: "https://github.com/rootsecops/metawiper"
 demoLink: "https://metawiper.streamlit.app/"
 ---
 
+[![Built with Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red?logo=streamlit)](https://streamlit.io)
+[![Python version](https://img.shields.io/badge/Python-3.9+-blue?logo=python)](https://python.org)
+[![GitHub stars](https://img.shields.io/github/stars/rootsecops/metawiper?style=social)](https://github.com/rootsecops/metawiper/stargazers)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-metawiper.streamlit.app-orange?logo=fire)](https://metawiper.streamlit.app/)
+
 MetaWiper is a command-line tool designed to protect user privacy by removing potentially sensitive metadata from files. 
 
 ### Why is this important?
