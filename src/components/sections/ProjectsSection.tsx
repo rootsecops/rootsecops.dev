@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import type { Project } from '@/lib/projects';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 // This is a client component, so we fetch the data on the client side.
 async function getProjects(): Promise<Project[]> {
@@ -66,6 +67,13 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
       className="py-4 md:py-8"
     >
       <div className="container mx-auto px-4">
+        {isHomePage && (
+          <SectionTitle
+            tagText="Projects"
+            title="What I've Done"
+            description="A selection of projects I've worked on or am currently developing."
+          />
+        )}
         
         {projectsToDisplay.length === 0 ? (
           <motion.div variants={cardVariants} custom={0} initial="hidden" animate={inView ? "visible" : {}}>
