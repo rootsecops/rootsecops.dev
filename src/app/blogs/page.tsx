@@ -68,29 +68,27 @@ export default function BlogsPage() {
       />
       
       {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(3)].map((_, index) => (
-                 <motion.div key={index} custom={index} variants={cardVariants} initial="hidden" animate="visible">
-                    <Card className="glass-card text-center p-8 min-h-[300px] flex flex-col justify-center items-center">
-                        <Loader2 className="mx-auto h-12 w-12 text-primary mb-4 animate-spin" />
-                        <CardTitle className="text-xl font-semibold text-primary mb-2">
-                            <DecryptedText 
-                                text="Decrypting Logs..." 
-                                speed={30} 
-                                sequential 
-                                animateOn="view"
-                                parentClassName="font-pixel"
-                                encryptedClassName="text-primary/50"
-                            />
-                        </CardTitle>
-                        <CardContent>
-                            <p className="text-muted-foreground text-balance text-sm">
-                            Accessing secure server... Please stand by.
-                            </p>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-            ))}
+          <div className="flex justify-center items-center min-h-[300px]">
+              <motion.div variants={cardVariants} initial="hidden" animate="visible">
+                  <Card className="glass-card text-center p-8 w-full max-w-md flex flex-col justify-center items-center">
+                      <Loader2 className="mx-auto h-12 w-12 text-primary mb-4 animate-spin" />
+                      <CardTitle className="text-xl font-semibold text-primary mb-2">
+                          <DecryptedText 
+                              text="blogs are loading up" 
+                              speed={50} 
+                              sequential 
+                              animateOn="view"
+                              parentClassName="font-pixel"
+                              encryptedClassName="text-primary/50"
+                          />
+                      </CardTitle>
+                      <CardContent>
+                          <p className="text-muted-foreground text-balance text-sm">
+                          Please wait while we fetch the latest posts.
+                          </p>
+                      </CardContent>
+                  </Card>
+              </motion.div>
           </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
