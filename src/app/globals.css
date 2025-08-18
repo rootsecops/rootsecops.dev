@@ -1,0 +1,114 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* white */
+    --foreground: 224 71% 4%; /* #0a0a0a */
+
+    --card: 0 0% 98%; /* almost white */
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 217 91% 60%; /* soft blue */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 224 71% 4%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 28% 47%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* black */
+    --foreground: 210 40% 98%; /* almost white */
+
+    --card: 240 4% 4%; /* #0a0a0a */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 4% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 158 100% 50%; /* neon green */
+    --primary-foreground: 158 100% 10%; /* very dark green, almost black */
+
+    --secondary: 240 4% 10%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 4% 10%;
+    --muted-foreground: 210 40% 65%;
+
+    --accent: 198 100% 50%; /* cyber blue */
+    --accent-foreground: 0 0% 0%; /* black */
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 4% 15%;
+    --input: 240 4% 15%;
+    --ring: 158 100% 50%;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 8rem; /* Provides clearance for the fixed navbar */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .retro-window {
+    @apply bg-background border-2 border-foreground shadow-[8px_8px_0px_hsl(var(--foreground))] dark:shadow-[8px_8px_0px_hsl(var(--foreground)),_0_0_20px_hsl(var(--primary)/0.5)] transition-shadow duration-300;
+  }
+  .retro-window-header {
+    @apply bg-foreground text-background flex items-center gap-2 p-2 border-b-2 border-foreground;
+  }
+  .retro-window-body {
+    @apply p-4 md:p-6;
+  }
+  .retro-button {
+    @apply inline-block relative text-center border-2 border-foreground px-6 py-2 font-pixel text-foreground uppercase tracking-wider no-underline;
+    background-image: linear-gradient(to right, hsl(var(--primary)) 50%, hsl(var(--background)) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0; /* Start with the right side (background) */
+    transition: background-position 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  .retro-button:hover {
+    background-position: 0 0; /* Move to the left side (primary) */
+    @apply text-primary-foreground dark:shadow-[0_0_12px_hsl(var(--primary)/0.7)];
+  }
+  .retro-button:focus {
+    /* For focus, we can just snap to the final state */
+    @apply bg-primary text-primary-foreground;
+    background-image: none; /* Disable gradient animation on focus */
+  }
+  .glass-card {
+    @apply bg-card/80 border border-border/60 backdrop-blur-md transition-all rounded-lg dark:bg-card/80;
+  }
+}
