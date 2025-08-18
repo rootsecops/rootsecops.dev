@@ -1,9 +1,11 @@
+
 import { getPostBySlug, getAllPosts } from '@/lib/blogs';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { Calendar, Tag } from 'lucide-react';
 import Image from 'next/image';
+import rehypeRaw from 'rehype-raw';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -68,7 +70,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </header>
 
       <div className="prose prose-invert max-w-none prose-h2:text-primary prose-a:text-primary hover:prose-a:text-primary/80 prose-strong:text-foreground">
-        <ReactMarkdown components={{ img: MarkdownImage }}>{post.content}</ReactMarkdown>
+        <ReactMarkdown components={{ img: MarkdownImage }} rehypePlugins={[rehypeRaw]}>{post.content}</ReactMarkdown>
       </div>
     </article>
   );

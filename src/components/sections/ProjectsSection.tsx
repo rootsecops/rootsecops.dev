@@ -8,27 +8,22 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionTitle from '../ui/SectionTitle';
+import { useEffect, useState } from 'react';
+import type { Project } from '@/lib/projects';
 
-const allProjects = [
-  {
-    title: 'Portfolio Website',
-    description: 'A personal portfolio built with Next.js, Tailwind CSS. Developed using Firebase Studio AI.',
-    image: 'https://raw.githubusercontent.com/rootsecops/rootsecops/refs/heads/main/assets/portfolio.png', 
-    imageHint: 'portfolio project', 
-    tags: ['Next.js', 'React', 'Tailwind CSS', 'Firebase', 'TypeScript'],
-    githubLink: 'https://github.com/rootsecops/CyberFolio',
-    demoLink: '/', 
-  },
-  {
-    title: 'MetaWiper',
-    description: 'A Bash script for Linux systems to securely wipe metadata from various file types, enhancing user privacy and data security.',
-    image: 'https://raw.githubusercontent.com/rootsecops/metawiper/refs/heads/main/assests/metawiper.streamlit.app.jpeg', 
-    imageHint: 'code security',
-    tags: ['Bash', 'Shell', 'Security', 'Privacy', 'Metadata'],
-    githubLink: 'https://github.com/rootsecops/metawiper', 
-    demoLink: 'https://metawiper.streamlit.app/', 
-  },
-];
+// This is a client component, so we fetch the data on the client side.
+async function getProjects(): Promise<Project[]> {
+    try {
+        // We will create this API route next
+        const res = await fetch('/api/projects');
+        if (!res.ok) return [];
+        const data = await res.json();
+        return data.projects;
+    } catch (error) {
+        console.error("Failed to fetch projects:", error);
+        return [];
+    }
+}
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -51,10 +46,16 @@ const cardVariants = {
 export default function ProjectsSection({ isHomePage = false }: { isHomePage?: boolean }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05, 
+    threshold: 0.05,
   });
 
-  const projects = isHomePage ? allProjects.slice(0, 2) : allProjects;
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+  
+  useEffect(() => {
+      getProjects().then(data => setAllProjects(data));
+  }, []);
+
+  const projectsToDisplay = isHomePage ? allProjects.slice(0, 2) : allProjects;
 
   return (
     <motion.section
@@ -72,7 +73,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
             description="A selection of projects I've worked on or am currently developing."
         />
         
-        {projects.length === 0 ? (
+        {projectsToDisplay.length === 0 ? (
           <motion.div variants={cardVariants} custom={0} initial="hidden" animate={inView ? "visible" : {}}>
             <Card className="glass-card text-center p-8">
               <Construction className="mx-auto h-12 w-12 text-primary mb-4" />
@@ -87,9 +88,9 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
           </motion.div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {projects.map((project, index) => (
+            {projectsToDisplay.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.slug}
                 custom={index}
                 variants={cardVariants}
                 initial="hidden"
@@ -135,7 +136,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                             </Link>
                           </Button>
                           <Button variant="outline" size="sm" asChild>
-                            <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                            <Link href={`${project.githubLink}/stargazers`} target="_blank" rel="noopener noreferrer">
                               <Star className="mr-2 h-4 w-4" /> Star
                             </Link>
                           </Button>
@@ -143,7 +144,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                       )}
                       {project.demoLink && (
                         <Button variant="default" size="sm" asChild>
-                          <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                          <Link href={project.demoLink} target={project.demoLink.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer">
                             <ExternalLink className="mr-2 h-4 w-4" /> Demo
                           </Link>
                         </Button>
