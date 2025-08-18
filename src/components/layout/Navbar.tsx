@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { href: '#home', label: 'Home', id: 'home' },
   { href: '#about', label: 'About Me', id: 'about' },
   { href: '#skills', label: 'Skills', id: 'skills' },
   { href: '/projects', label: 'Projects', id: 'projects' },
