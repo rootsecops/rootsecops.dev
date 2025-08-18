@@ -111,11 +111,5 @@
   .glass-card {
     @apply bg-card/80 border border-border/60 backdrop-blur-md transition-all rounded-lg dark:bg-card/80;
   }
-  /* New style for the scrolled state */
-  body.is-scrolled main {
-    @apply before:content-[''] before:fixed before:inset-x-0 before:top-0 before:h-24 before:z-40 before:pointer-events-none;
-    @apply before:transition-opacity before:duration-300;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
+  
 }

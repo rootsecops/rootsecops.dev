@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
+  { href: '#home', label: 'Home', id: 'home' },
   { href: '#about', label: 'About Me', id: 'about' },
   { href: '#skills', label: 'Skills', id: 'skills' },
   { href: '/projects', label: 'Projects', id: 'projects' },
@@ -143,24 +144,26 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
       }
       return "rounded-full";
   };
+  
+  const filteredNavLinks = isScrolled ? navLinks.filter(link => link.id !== 'home') : navLinks;
 
 
   return (
     <>
-      <header className="fixed top-4 left-0 right-0 z-50 px-4">
+      <header className="fixed top-2 left-0 right-0 z-50 px-4">
         <div className="max-w-5xl mx-auto">
           <nav className={cn(
-              "relative flex items-center justify-between w-full rounded-full p-2 transition-all duration-300",
+              "relative flex items-center justify-between w-full rounded-full p-1.5 transition-all duration-300",
               isScrolled 
-                ? "bg-background/80 border border-border/20 shadow-sm" 
+                ? "bg-background/80 border border-border/20 shadow-sm backdrop-blur-lg" 
                 : "bg-transparent border-transparent"
             )}>
-            <Link href="/" className="flex items-center pl-4">
+            <Link href="/" className="flex items-center pl-3">
                <Image
                     src="https://see.fontimg.com/api/rf5/4n7xD/NGI4NzA2ODhlNGZlNDJhMThkN2U0ZGNmZDhmZGFhZDYub3Rm/Um9vdFNlY09wcw/radeil-3d-demo-ruderight.png?r=fs&h=81&w=1250&fg=00FFAA&bg=000000&tb=1&s=65"
                     alt="RootSecOps Logo"
-                    width={150}
-                    height={30}
+                    width={120}
+                    height={24}
                     priority
                     style={{ width: 'auto', height: 'auto' }}
                 />
@@ -168,14 +171,14 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1 text-sm">
-              {navLinks.map((link) => {
+              {filteredNavLinks.map((link) => {
                   const isActive = activeSection === (link.id || link.href);
                   return (
                       <motion.div key={link.href} className="relative" whileHover={{ y: -2 }}>
                           <Link
                               href={getLinkHref(link.href)}
                               className={cn(
-                                  "font-medium transition-colors duration-200 px-3 py-1.5 rounded-md block",
+                                  "font-medium transition-colors duration-200 px-3 py-1 rounded-md block",
                                   isActive
                                       ? "text-primary"
                                       : "text-foreground hover:text-primary"
@@ -185,7 +188,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
                           </Link>
                           {isActive && (
                               <motion.div
-                                  className="absolute bottom-0 left-2 right-2 h-[2px] bg-primary dark:shadow-[0_0_8px_hsl(var(--primary))]"
+                                  className="absolute bottom-0 left-2 right-2 h-px bg-primary dark:shadow-[0_0_8px_hsl(var(--primary))]"
                                   layoutId="active-nav-link"
                                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                               />
@@ -198,6 +201,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
             <div className="hidden md:flex items-center gap-2">
               <motion.div whileHover={{ y: -2 }}>
                 <Button 
+                  size="sm"
                   variant={activeSection === 'contact' ? 'default' : 'outline'} 
                   className={getContactClass(false)} 
                   asChild
@@ -239,7 +243,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
             className="fixed inset-0 z-40 bg-background/90 backdrop-blur-lg"
           >
             <motion.div className="flex h-full flex-col items-center justify-center gap-8 text-center">
-              {navLinks.map((link) => {
+              {filteredNavLinks.map((link) => {
                 const isActive = activeSection === (link.id || link.href);
                 return (
                   <motion.div key={link.href} variants={mobileLinkVariants}>
