@@ -152,7 +152,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
       <header className="fixed top-2 left-0 right-0 z-50 px-4">
         <div className="max-w-5xl mx-auto">
           <nav className={cn(
-              "relative flex items-center justify-between w-full rounded-full p-1.5 transition-all duration-300",
+              "relative flex items-center justify-between w-full rounded-full p-2 transition-all duration-300",
               isScrolled 
                 ? "bg-background/80 border border-border/20 shadow-sm backdrop-blur-lg" 
                 : "bg-transparent border-transparent"
