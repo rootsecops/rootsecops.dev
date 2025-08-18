@@ -1,11 +1,13 @@
+
 "use client";
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 import SectionTitle from '../ui/SectionTitle';
+import { ReadMore } from '../ui/ReadMore';
 
 const experienceData = [
   {
@@ -16,7 +18,7 @@ const experienceData = [
     type: 'Internship',
     duration: 'Jun 2025 - July 2025 · 1 mo',
     location: 'India · Remote',
-    description: 'Gaining hands-on experience in cybersecurity concepts and practices as part of the ECSIP 2025 program.',
+    description: 'Gaining hands-on experience in cybersecurity concepts and practices as part of the ECSIP 2025 program. This involves learning about various security domains, working with industry-standard tools, and participating in simulated security incident responses to build practical skills in a professional setting.',
     skills: ['Cybersecurity', 'Cyberlaw', 'Network Security', 'Vulnerability Assessment'],
   },
 ];
@@ -29,7 +31,7 @@ const educationAndCertsData = [
       degree: "Bachelor's in Computer Science",
       duration: '2024 - 2028',
       status: 'Pursuing',
-      description: 'Focusing on core computer science principles with a growing interest in cybersecurity applications.',
+      description: "Focusing on core computer science principles with a growing interest in cybersecurity applications. The curriculum covers a wide range of topics from foundational programming and algorithms to advanced network security and ethical hacking. My coursework is designed to provide a strong theoretical base and practical skills to tackle modern technological challenges. I'm also actively involved in cybersecurity clubs and competitions to further hone my expertise in this specialized field.",
       skills: ['Data Structures', 'Algorithms', 'Cybersecurity Foundations']
     },
     {
@@ -39,7 +41,7 @@ const educationAndCertsData = [
       degree: 'Diploma in Computer Science application',
       duration: '2024 - 2025',
       status: 'Completed',
-      description: 'Supplementary diploma program to enhance practical computer science skills.',
+      description: 'Supplementary diploma program to enhance practical computer science skills, covering office productivity suites, database management, and basic web development.',
       skills: ['Practical Programming', 'System Administration']
     },
 ];
@@ -102,7 +104,9 @@ export default function AcademicBackgroundSection() {
                             <h3 className="font-bold text-base md:text-lg text-foreground">{item.role}</h3>
                             <p className="text-sm text-muted-foreground">{item.company} · {item.type}</p>
                             <p className="text-xs text-muted-foreground/80 mt-1">{item.duration} · {item.location}</p>
-                            <p className="mt-2 text-sm text-foreground/90 leading-relaxed">{item.description}</p>
+                            <div className="mt-2 text-sm text-foreground/90 leading-relaxed">
+                                <ReadMore text={item.description} maxLength={150} />
+                            </div>
                             {item.skills && item.skills.length > 0 && (
                                 <div className="mt-3 flex flex-wrap gap-2">
                                   {item.skills.map(skill => (
@@ -142,7 +146,9 @@ export default function AcademicBackgroundSection() {
                                 <h3 className="font-bold text-base md:text-lg text-foreground">{item.degree}</h3>
                                 <p className="text-sm text-muted-foreground">{item.institution}</p>
                                 <p className="text-xs text-muted-foreground/80 mt-1">{item.duration} · <span className="font-medium text-foreground/90">{item.status}</span></p>
-                                <p className="mt-2 text-sm text-foreground/90 leading-relaxed">{item.description}</p>
+                                <div className="mt-2 text-sm text-foreground/90 leading-relaxed">
+                                    <ReadMore text={item.description} maxLength={150} />
+                                </div>
                                 {item.skills && item.skills.length > 0 && (
                                   <div className="mt-3 flex flex-wrap gap-2">
                                   {item.skills.map(skill => (
