@@ -51,8 +51,8 @@ export default function SkillsSection() {
       <div className="container mx-auto px-4">
         <SectionTitle
           tagText="Skills"
-          title="Tools Arsenal"
-          description="A selection of the tools I use for security assessments and operations."
+          title="Technical Toolkit & Knowledge Base"
+          description="An overview of the tools, technologies, and concepts that form my cybersecurity skillset."
         />
         
         <div className="py-6">
