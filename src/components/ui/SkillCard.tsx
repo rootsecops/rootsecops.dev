@@ -22,7 +22,7 @@ export default function SkillCard({ icon: Icon, name, category, proficiency }: S
       <div className={`tool-badge ${badgeClass}`}>
         {proficiency}
       </div>
-      <Icon className="tool-icon mb-4" />
+      <Icon className="w-12 h-12 mb-4 tool-icon" />
       <h4 className="font-bold text-lg text-foreground">{name}</h4>
       <p className="text-sm text-muted-foreground">{category}</p>
     </div>

@@ -137,10 +137,10 @@
       box-shadow: 0 8px 30px hsla(var(--primary)/0.2), 0 0 20px hsla(var(--primary)/0.2);
   }
   .tool-icon {
-      @apply w-12 h-12 text-foreground transition-all duration-300;
+      @apply transition-all duration-300;
   }
   .tool-card:hover .tool-icon {
-      @apply scale-110 text-primary drop-shadow-[0_0_10px_hsl(var(--primary))];
+      @apply scale-110 drop-shadow-[0_0_10px_hsl(var(--primary))];
   }
   .tool-badge {
       @apply absolute top-2 right-2 px-2 py-0.5 text-xs font-bold rounded-full;
