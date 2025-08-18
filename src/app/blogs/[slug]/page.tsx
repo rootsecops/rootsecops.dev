@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug:string } }) 
 // Custom component for rendering images with Next.js Image optimization
 const MarkdownImage = (props: any) => {
     return (
-        <div className="relative my-6 w-full h-96">
+        <span className="relative block my-6 w-full h-96">
              <Image
                 src={props.src}
                 alt={props.alt}
@@ -37,7 +37,7 @@ const MarkdownImage = (props: any) => {
                 className="rounded-lg border border-border"
                 sizes="(max-width: 768px) 100vw, 70vw"
              />
-        </div>
+        </span>
     );
 };
 
