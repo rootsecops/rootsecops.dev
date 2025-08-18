@@ -7,9 +7,10 @@ import LogoLoop from '../ui/LogoLoop';
 import SkillCard from '../ui/SkillCard';
 import type { SkillCardProps } from '../ui/SkillCard';
 import { 
-  SiLinux, SiGnubash, SiPython, SiCplusplus, 
-  SiWireshark, SiBurpsuite, SiMetasploit
+  SiLinux, SiPython, SiCplusplus, 
+  SiWireshark, SiGnubash, SiBurpsuite, SiMetasploit
 } from 'react-icons/si';
+import { FaBrain } from 'react-icons/fa';
 
 const allSkills: SkillCardProps[] = [
   // Intermediate
@@ -17,6 +18,7 @@ const allSkills: SkillCardProps[] = [
   { icon: SiPython, name: "Python", category: "Programming", proficiency: "Intermediate" },
   { icon: SiCplusplus, name: "C++", category: "Programming", proficiency: "Intermediate" },
   { icon: SiWireshark, name: "Wireshark", category: "Network Analysis", proficiency: "Intermediate" },
+  { icon: FaBrain, name: "Networking Concepts", category: "Knowledge", proficiency: "Intermediate" },
   // Beginner
   { icon: SiGnubash, name: "Bash", category: "Scripting", proficiency: "Beginner" },
   { icon: SiBurpsuite, name: "Burp Suite", category: "Web Security", proficiency: "Beginner" },
