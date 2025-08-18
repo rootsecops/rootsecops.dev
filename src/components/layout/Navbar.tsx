@@ -162,7 +162,7 @@ export default function Navbar() {
           <nav className={cn(
               "relative flex items-center justify-between w-full rounded-full p-2 transition-all duration-300",
               isScrolled 
-                ? "bg-background/80 backdrop-blur-sm border border-border/20 shadow-sm" 
+                ? "bg-background/80 backdrop-blur-lg border border-border/20 shadow-sm" 
                 : "bg-transparent border-transparent"
             )}>
             <Link href="/" className="flex items-center pl-4">
