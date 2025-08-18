@@ -2,13 +2,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Github, ExternalLink, Construction, Star, ArrowRight, BookOpen } from 'lucide-react';
+import { Github, ExternalLink, Star, ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import type { Project } from '@/lib/projects';
 import SectionTitle from '@/components/ui/SectionTitle';
+import DecryptedText from '../ui/DecryptedText';
 
 // This is a client component, so we fetch the data on the client side.
 async function getProjects(): Promise<Project[]> {
@@ -48,9 +49,14 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
   });
 
   const [allProjects, setAllProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-      getProjects().then(data => setAllProjects(data));
+      setIsLoading(true);
+      getProjects().then(data => {
+          setAllProjects(data);
+          setIsLoading(false);
+      });
   }, []);
 
   const projectsToDisplay = isHomePage ? allProjects.slice(0, 2) : allProjects;
@@ -73,15 +79,23 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
           />
         )}
         
-        {projectsToDisplay.length === 0 && !isHomePage ? (
+        {isLoading ? (
           <motion.div variants={cardVariants} custom={0} initial="hidden" animate={inView ? "visible" : {}}>
-            <Card className="glass-card text-center p-8">
-              <Construction className="mx-auto h-12 w-12 text-primary mb-4" />
-              <CardTitle className="text-xl font-semibold text-primary mb-2">Projects In Progress</CardTitle>
+             <Card className="glass-card text-center p-8 min-h-[200px] flex flex-col justify-center items-center">
+              <Loader2 className="mx-auto h-12 w-12 text-primary mb-4 animate-spin" />
+              <CardTitle className="text-xl font-semibold text-primary mb-2">
+                 <DecryptedText 
+                  text="Decrypting Project Files..." 
+                  speed={30} 
+                  sequential 
+                  animateOn="view"
+                  parentClassName="font-pixel"
+                  encryptedClassName="text-primary/50"
+                 />
+              </CardTitle>
               <CardContent>
-                <p className="text-muted-foreground text-balance">
-                  I am currently working on several exciting cybersecurity projects. 
-                  Detailed information will be available here soon. Stay tuned!
+                <p className="text-muted-foreground text-balance text-sm">
+                  Establishing secure connection... Please wait.
                 </p>
               </CardContent>
             </Card>
@@ -127,25 +141,27 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                     </div>
                   </CardContent>
                   <CardFooter className="mt-auto pt-4 flex w-full flex-wrap items-center justify-start gap-3">
-                      {project.githubLink && (
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                              <Github className="mr-2 h-4 w-4" /> GitHub
+                      <div className="flex flex-wrap gap-3">
+                        {project.githubLink && (
+                            <Button variant="outline" size="sm" asChild>
+                              <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                <Github className="mr-2 h-4 w-4" /> GitHub
+                              </Link>
+                            </Button>
+                        )}
+                        {project.demoLink && (
+                          <Button variant="default" size="sm" asChild>
+                            <Link href={project.demoLink} target={project.demoLink.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer">
+                              <ExternalLink className="mr-2 h-4 w-4" /> Demo
                             </Link>
                           </Button>
-                      )}
-                      {project.demoLink && (
-                        <Button variant="default" size="sm" asChild>
-                          <Link href={project.demoLink} target={project.demoLink.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer">
-                            <ExternalLink className="mr-2 h-4 w-4" /> Demo
-                          </Link>
-                        </Button>
-                      )}
-                       <Button variant="outline" size="sm" asChild>
-                          <Link href={`/projects/${project.slug}`}>
-                            Read More <BookOpen className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
+                        )}
+                         <Button variant="outline" size="sm" asChild>
+                            <Link href={`/projects/${project.slug}`}>
+                              Read More <BookOpen className="ml-2 h-4 w-4" />
+                            </Link>
+                          </Button>
+                      </div>
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -153,7 +169,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
           </div>
         )}
 
-        {isHomePage && allProjects.length > 2 && (
+        {!isLoading && isHomePage && allProjects.length > 2 && (
           <div className="mt-8 text-center">
             <Button asChild>
               <Link href="/projects">
