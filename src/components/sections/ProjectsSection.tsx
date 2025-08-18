@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Github, ExternalLink, Construction, Star, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, Construction, Star, ArrowRight, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -14,7 +14,6 @@ import SectionTitle from '@/components/ui/SectionTitle';
 // This is a client component, so we fetch the data on the client side.
 async function getProjects(): Promise<Project[]> {
     try {
-        // We will create this API route next
         const res = await fetch('/api/projects');
         if (!res.ok) return [];
         const data = await res.json();
@@ -75,7 +74,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
           />
         )}
         
-        {projectsToDisplay.length === 0 ? (
+        {projectsToDisplay.length === 0 && !isHomePage ? (
           <motion.div variants={cardVariants} custom={0} initial="hidden" animate={inView ? "visible" : {}}>
             <Card className="glass-card text-center p-8">
               <Construction className="mx-auto h-12 w-12 text-primary mb-4" />
@@ -119,7 +118,7 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="flex-grow">
-                    <p className="text-sm text-muted-foreground mb-3 text-balance">{project.description}</p>
+                    <p className="text-sm text-muted-foreground mb-3 text-balance line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2 my-2">
                       {project.tags.map(tag => (
                         <span key={tag} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full">
@@ -128,21 +127,14 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="mt-auto pt-4">
+                  <CardFooter className="mt-auto pt-4 flex-wrap gap-2">
                     <div className="flex space-x-3">
                       {project.githubLink && (
-                        <>
                           <Button variant="outline" size="sm" asChild>
                             <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
                               <Github className="mr-2 h-4 w-4" /> GitHub
                             </Link>
                           </Button>
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={`${project.githubLink}/stargazers`} target="_blank" rel="noopener noreferrer">
-                              <Star className="mr-2 h-4 w-4" /> Star
-                            </Link>
-                          </Button>
-                        </>
                       )}
                       {project.demoLink && (
                         <Button variant="default" size="sm" asChild>
@@ -151,6 +143,13 @@ export default function ProjectsSection({ isHomePage = false }: { isHomePage?: b
                           </Link>
                         </Button>
                       )}
+                    </div>
+                     <div className="flex-grow flex justify-end">
+                       <Button variant="outline" size="sm" asChild>
+                          <Link href={`/projects/${project.slug}`}>
+                            Read More <BookOpen className="ml-2 h-4 w-4" />
+                          </Link>
+                        </Button>
                     </div>
                   </CardFooter>
                 </Card>
