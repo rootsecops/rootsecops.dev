@@ -145,7 +145,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
       return "rounded-full";
   };
   
-  const filteredNavLinks = isScrolled ? navLinks.filter(link => link.id !== 'home') : navLinks;
+  const filteredNavLinks = navLinks;
 
 
   return (
