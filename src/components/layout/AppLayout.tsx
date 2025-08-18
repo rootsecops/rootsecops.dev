@@ -38,7 +38,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Navbar isScrolled={isScrolled} />
-      <main className="flex-grow container mx-auto px-4 pt-20 pb-8 z-10">
+      <main className="flex-grow container mx-auto px-4 pt-16 pb-8 z-10">
         {children}
       </main>
       <Footer />
