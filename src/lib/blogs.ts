@@ -1,3 +1,4 @@
+
 import matter from 'gray-matter';
 import { format } from 'date-fns';
 
@@ -21,11 +22,6 @@ export interface BlogPost {
 
 const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${GITHUB_BLOGS_PATH}?ref=${GITHUB_BRANCH}`;
 
-// Memoization cache
-let cachedPosts: BlogPost[] | null = null;
-let lastFetchTime: number | null = null;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-
 async function fetchFromGitHub(url: string) {
     const headers: HeadersInit = {
         'Accept': 'application/vnd.github.v3+json',
@@ -40,8 +36,8 @@ async function fetchFromGitHub(url: string) {
 
     const response = await fetch(url, {
         headers,
-        // Revalidate cache based on a time interval (e.g., every hour)
-        next: { revalidate: 3600 } 
+        // Force revalidation on every request during build time
+        cache: 'no-store'
     });
 
     if (!response.ok) {
@@ -60,19 +56,11 @@ async function fetchFromGitHub(url: string) {
 
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-    const now = Date.now();
-    // Use cache if it's recent to avoid hitting rate limits
-    if (cachedPosts && lastFetchTime && (now - lastFetchTime < CACHE_DURATION)) {
-        return cachedPosts;
-    }
-
     try {
         const files = await fetchFromGitHub(GITHUB_API_URL);
 
         if (!files || !Array.isArray(files)) {
             console.warn("No blog posts found in the specified GitHub directory or the directory does not exist.");
-            cachedPosts = [];
-            lastFetchTime = now;
             return [];
         }
 
@@ -82,7 +70,9 @@ export async function getAllPosts(): Promise<BlogPost[]> {
                 const fileContentResponse = await fetch(file.download_url, {
                    headers: {
                        'Authorization': `token ${process.env.GITHUB_TOKEN}`
-                   }
+                   },
+                   // Ensure the content of each file is always fresh
+                   cache: 'no-store'
                 });
                 const rawContent = await fileContentResponse.text();
                 
@@ -104,10 +94,6 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         
         // Sort posts by date in descending order
         posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-        // Update cache
-        cachedPosts = posts;
-        lastFetchTime = now;
 
         return posts;
     } catch (error) {
