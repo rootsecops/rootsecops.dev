@@ -71,8 +71,8 @@ export default {
           to: { height: "0" },
         },
         "noise-reveal": {
-          '0%': { 'clip-path': 'inset(100% 0 0 0)', opacity: 0 },
-          '5%': { 'clip-path': 'inset(90% 0 5% 0)', opacity: 1 },
+          '0%': { 'clip-path': 'inset(100% 0 0 0)', opacity: "0" },
+          '5%': { 'clip-path': 'inset(90% 0 5% 0)', opacity: "1" },
           '15%': { 'clip-path': 'inset(10% 0 80% 0)' },
           '25%': { 'clip-path': 'inset(95% 0 2% 0)' },
           '35%': { 'clip-path': 'inset(40% 0 55% 0)' },
@@ -80,7 +80,7 @@ export default {
           '65%': { 'clip-path': 'inset(98% 0 1% 0)' },
           '80%': { 'clip-path': 'inset(15% 0 5% 0)' },
           '90%': { 'clip-path': 'inset(80% 0 10% 0)' },
-          '100%': { 'clip-path': 'inset(0 0 0 0)', opacity: 1 },
+          '100%': { 'clip-path': 'inset(0 0 0 0)', opacity: "1" },
         },
       },
       animation: {
