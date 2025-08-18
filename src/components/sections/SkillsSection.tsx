@@ -1,60 +1,64 @@
+
 "use client";
-import { Progress } from '@/components/ui/progress';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Terminal, ShieldCheck, ShieldHalf, Network } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionTitle from '../ui/SectionTitle';
+import LogoLoop from '../ui/LogoLoop';
+import { 
+  SiLinux, SiKalilinux, SiGnubash, SiPython, SiCplusplus, 
+  SiWireshark, SiBurpsuite, SiNmap, SiMetasploit,
+  SiReact, SiNextdotjs, SiTailwindcss, SiVercel, SiGithub, SiGit
+} from 'react-icons/si';
 
-const skillCategories = [
-  {
-    name: 'Foundational',
-    icon: Terminal,
-    color: 'text-primary',
-    skills: [
-      { name: 'Linux', level: 60 },
-      { name: 'Python (Basic)', level: 40 },
-      { name: 'Networking Fundamentals', level: 50 },
-    ],
-  },
-  {
-    name: 'Defensive & Analytical',
-    icon: ShieldCheck,
-    color: 'text-primary',
-    skills: [
-      { name: 'Phishing Threat Analysis', level: 40 },
-      { name: 'OSINT Techniques', level: 40 },
-    ],
-  },
-    {
-    name: 'Offensive Tools',
-    icon: ShieldHalf,
-    color: 'text-primary',
-    skills: [
-      { name: 'Wifite', level: 70 },
-      { name: 'Fluxion', level: 70 },
-    ],
-  },
-  {
-    name: 'Network & Web Tools',
-    icon: Network,
-    color: 'text-primary',
-    skills: [
-      { name: 'Burp Suite', level: 30 },
-      { name: 'Wireshark', level: 30 },
-    ],
-  },
+const expertLogos = [
+  { node: <SiLinux />, title: "Linux", href: "https://www.linux.org/" },
+  { node: <SiKalilinux />, title: "Kali Linux", href: "https://www.kali.org/" },
+  { node: <SiGnubash />, title: "Bash", href: "https://www.gnu.org/software/bash/" },
 ];
+
+const intermediateLogos = [
+  { node: <SiPython />, title: "Python", href: "https://www.python.org/" },
+  { node: <SiCplusplus />, title: "C++", href: "https://isocpp.org/" },
+  { node: <SiWireshark />, title: "Wireshark", href: "https://www.wireshark.org/" },
+  { node: <SiGit />, title: "Git", href: "https://git-scm.com/" },
+  { node: <SiGithub />, title: "GitHub", href: "https://github.com" },
+];
+
+const beginnerLogos = [
+  { node: <SiBurpsuite />, title: "Burp Suite", href: "https://portswigger.net/burp" },
+  { node: <SiNmap />, title: "Nmap", href: "https://nmap.org/" },
+  { node: <SiMetasploit />, title: "Metasploit", href: "https://www.metasploit.com/" },
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiVercel />, title: "Vercel", href: "https://vercel.com" },
+];
+
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.1 } },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+const SkillCategory = ({ title, logos, speed, direction }: { title: string, logos: any[], speed: number, direction: 'left' | 'right' }) => (
+    <div className="mb-8">
+        <h3 className="text-xl md:text-2xl font-semibold text-primary mb-4 text-center">{title}</h3>
+        <div className="relative overflow-hidden py-4">
+             <LogoLoop
+                logos={logos}
+                speed={speed}
+                direction={direction}
+                logoHeight={40}
+                gap={48}
+                pauseOnHover
+                scaleOnHover
+                fadeOut
+                fadeOutColor="hsl(var(--background))"
+             />
+        </div>
+    </div>
+);
+
 
 export default function SkillsSection() {
   const { ref, inView } = useInView({
@@ -78,38 +82,11 @@ export default function SkillsSection() {
             description="A showcase of my technical abilities and tool proficiencies in cybersecurity."
         />
         
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
-          variants={sectionVariants}
-        >
-          {skillCategories.map((category) => (
-            <motion.div
-              key={category.name}
-              variants={cardVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            >
-              <Card className="glass-card">
-                <CardHeader>
-                  <CardTitle className={`flex items-center text-lg md:text-xl font-semibold ${category.color}`}>
-                    <category.icon className="mr-3 h-5 w-5" />
-                    {category.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-2">
-                  {category.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-1.5">
-                        <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                        <span className={`text-sm font-medium ${category.color}`}>{skill.level}%</span>
-                      </div>
-                      <Progress value={skill.level} className="h-2 [&>div]:bg-primary" />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="max-w-4xl mx-auto">
+            <SkillCategory title="Expert" logos={expertLogos} speed={60} direction="left" />
+            <SkillCategory title="Intermediate" logos={intermediateLogos} speed={90} direction="right" />
+            <SkillCategory title="Beginner" logos={beginnerLogos} speed={120} direction="left" />
+        </div>
       </div>
     </motion.section>
   );
