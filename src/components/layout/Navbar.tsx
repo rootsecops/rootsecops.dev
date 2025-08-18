@@ -52,20 +52,10 @@ const hamburgerLineProps = {
 };
 
 
-export default function Navbar() {
+export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Effect to handle active section highlighting and URL hash updating on scroll
   useEffect(() => {
@@ -162,7 +152,7 @@ export default function Navbar() {
           <nav className={cn(
               "relative flex items-center justify-between w-full rounded-full p-2 transition-all duration-300",
               isScrolled 
-                ? "bg-background/80 backdrop-blur-lg border border-border/20 shadow-sm" 
+                ? "bg-background/80 border border-border/20 shadow-sm" 
                 : "bg-transparent border-transparent"
             )}>
             <Link href="/" className="flex items-center pl-4">
