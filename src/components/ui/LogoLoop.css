@@ -1,6 +1,8 @@
 .logoloop {
   position: relative;
   overflow-x: hidden;
+  padding-top: 1rem; /* Add padding to prevent clipping */
+  padding-bottom: 1rem; /* Add padding to prevent clipping */
 
   --logoloop-gap: 32px;
   --logoloop-logoHeight: 28px;
