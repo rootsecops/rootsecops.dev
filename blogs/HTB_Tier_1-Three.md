@@ -234,12 +234,10 @@ a980d99281a28d638ac68b9bf9453c2b
 
 ## Tools Used
 
-| Tool              | Purpose                                   | Link                                                                                                     |
-| ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| nmap              | Port scanning and service enumeration     | [https://nmap.org/](https://nmap.org/)                                                                   |
-| ffuf              | Fuzzing hostnames to find subdomains      | [https://github.com/ffuf/ffuf](https://github.com/ffuf/ffuf)                                             |
-| gobuster          | Subdomain/vhost enumeration               | [https://github.com/OJ/gobuster](https://github.com/OJ/gobuster)                                         |
-| AWS CLI           | Interacting with Amazon S3 buckets        | [https://aws.amazon.com/cli/](https://aws.amazon.com/cli/)                                               |
-| PHP Reverse Shell | Reverse shell payload for PHP web servers | [https://github.com/pentestmonkey/php-reverse-shell](https://github.com/pentestmonkey/php-reverse-shell) |
+* **nmap**: Port scanning and service enumeration — [https://nmap.org/](https://nmap.org/)
+* **ffuf**: Fuzzing hostnames to find subdomains — [https://github.com/ffuf/ffuf](https://github.com/ffuf/ffuf)
+* **gobuster**: Subdomain/vhost enumeration — [https://github.com/OJ/gobuster](https://github.com/OJ/gobuster)
+* **AWS CLI**: Interacting with Amazon S3 buckets — [https://aws.amazon.com/cli/](https://aws.amazon.com/cli/)
+* **PHP Reverse Shell**: Reverse shell payload for PHP web servers — [https://github.com/pentestmonkey/php-reverse-shell](https://github.com/pentestmonkey/php-reverse-shell)
 
 ---
