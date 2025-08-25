@@ -1,65 +1,58 @@
 ---
+title: "HTB Tier 0: Fawn - Complete Walkthrough"
+date: "2025-08-21"
+tags: ["HTB", "Cybersecurity", "Beginner", "CTF", "Walkthrough"]
+excerpt: "A complete step-by-step walkthrough for the HTB Tier 0: Fawn machine, including all commands, outputs, and explanations for tools used."
+---
 
-title: "HTB Tier 0: Fawn - Complete Walkthrough" date: "2025-08-21" tags: ["HTB", "Cybersecurity", "Beginner", "CTF", "Walkthrough"] excerpt: "A complete step-by-step walkthrough for the HTB Tier 0: Fawn machine, including all commands, outputs, and explanations for tools used."
-
-HTB Tier 0: Fawn Walkthrough
+# HTB Tier 0: Fawn Walkthrough
 
 This walkthrough provides a detailed step-by-step solution for the HTB Tier 0: Fawn machine. All commands, outputs, and explanations are included so anyone can follow along.
 
+---
+
+## Step 1
+
+**Question:** What does the 3-letter acronym FTP stand for?
+
+**Answer:** File Transfer Protocol ✅
+
+**Explanation:**
+- Protocol for transferring files between computers over a network.
+- Sends data in clear text (not encrypted).
 
 ---
 
-Step 1
+## Step 2
 
-Question: What does the 3-letter acronym FTP stand for?
+**Question:** Which port does the FTP service usually listen on?
 
-Answer: File Transfer Protocol ✅
+**Answer:** 21 ✅
 
-Explanation:
-
-Protocol for transferring files between computers over a network.
-
-Sends data in clear text (not encrypted).
-
-
+**Explanation:** Standard port for FTP service.
 
 ---
 
-Step 2
+## Step 3
 
-Question: Which port does the FTP service usually listen on?
+**Question:** FTP sends data in the clear. What acronym is used for a later protocol designed to provide similar functionality securely over SSH?
 
-Answer: 21 ✅
+**Answer:** SFTP (SSH File Transfer Protocol) ✅
 
-Explanation: Standard port for FTP service.
-
-
----
-
-Step 3
-
-Question: FTP sends data in the clear. What acronym is used for a later protocol designed to provide similar functionality securely over SSH?
-
-Answer: SFTP (SSH File Transfer Protocol) ✅
-
-Explanation:
-
-Encrypts file transfers using SSH.
-
-Different from FTPS (FTP over SSL/TLS).
-
-
+**Explanation:**
+- Encrypts file transfers using SSH.
+- Different from FTPS (FTP over SSL/TLS).
 
 ---
 
-Step 4
+## Step 4
 
-Question: What is the command to send an ICMP echo request to test connectivity?
+**Question:** What is the command to send an ICMP echo request to test connectivity?
 
-Answer: ping ✅
+**Answer:** ping ✅
 
-Command:
-
+**Command:**
+```bash
 ping 10.129.211.204
 
 Explanation:
@@ -247,3 +240,7 @@ FTP = File Transfer Protocol
 SFTP = SSH File Transfer Protocol
 
 ICMP = Internet Control Message Protocol
+
+ASCII = American Standard Code for Information Interchange
+
+Binary = Raw 0s and 1s representation of data
