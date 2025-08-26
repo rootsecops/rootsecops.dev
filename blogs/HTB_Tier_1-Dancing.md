@@ -206,6 +206,3 @@ ADMIN$ / C$ = Default administrative shares on Windows
 
 get = smbclient command to download files
 
-
-
----
