@@ -34,4 +34,4 @@ This is my personal portfolio built with **Next.js**. It highlights my projects,
 
 Deployed on [Vercel](https://vercel.com) for fast and reliable hosting.  
 
-🔗 **Live Website:** [rootsecops.dev](https://rootsecops.vercel.app)
+🔗 **Live Website:** [son4jit.io](https://son4jit.qzz.io)
