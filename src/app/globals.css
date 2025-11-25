@@ -1,0 +1,232 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* white */
+    --foreground: 224 71% 4%; /* #0a0a0a */
+
+    --card: 0 0% 98%; /* almost white */
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 217 91% 60%; /* soft blue */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 224 71% 4%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 28% 47%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* black */
+    --foreground: 210 40% 98%; /* almost white */
+
+    --card: 240 4% 4%; /* #0a0a0a */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 4% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 158 100% 50%; /* neon green */
+    --primary-foreground: 158 100% 10%; /* very dark green, almost black */
+
+    --secondary: 240 4% 10%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 4% 10%;
+    --muted-foreground: 210 40% 65%;
+
+    --accent: 198 100% 50%; /* cyber blue */
+    --accent-foreground: 0 0% 0%; /* black */
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 4% 15%;
+    --input: 240 4% 15%;
+    --ring: 158 100% 50%;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 8rem; /* Provides clearance for the fixed navbar */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  .dark body {
+    background-color: hsl(var(--background));
+     background-image:
+      linear-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--foreground) / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  body.is-scrolled {
+    --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur);
+    backdrop-filter: var(--tw-backdrop-blur);
+  }
+
+  /* Image protection */
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Hide native search input clear button */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+  }
+}
+
+@layer components {
+  .retro-window {
+    @apply bg-background border-2 border-foreground shadow-[8px_8px_0px_hsl(var(--foreground))] dark:shadow-[8px_8px_0px_hsl(var(--foreground)),_0_0_20px_hsl(var(--primary)/0.5)] transition-shadow duration-300;
+  }
+  .retro-window-header {
+    @apply bg-foreground text-background flex items-center gap-2 p-2 border-b-2 border-foreground;
+  }
+  .retro-window-body {
+    @apply p-4 md:p-6;
+  }
+  .retro-button {
+    @apply inline-block relative text-center border-2 border-foreground px-6 py-2 font-pixel text-foreground uppercase tracking-wider no-underline;
+    background-image: linear-gradient(to right, hsl(var(--primary)) 50%, hsl(var(--background)) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0; /* Start with the right side (background) */
+    transition: background-position 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  .retro-button:hover {
+    background-position: 0 0; /* Move to the left side (primary) */
+    @apply text-primary-foreground dark:shadow-[0_0_12px_hsl(var(--primary)/0.7)];
+  }
+  .retro-button:focus {
+    /* For focus, we can just snap to the final state */
+    @apply bg-primary text-primary-foreground;
+    background-image: none; /* Disable gradient animation on focus */
+  }
+  .glass-card {
+    @apply bg-card/80 border border-border/60 backdrop-blur-md transition-all rounded-lg dark:bg-card/80;
+  }
+
+  .tool-card {
+      @apply w-64 h-auto p-4 flex flex-col items-start justify-between bg-card/80 border border-border/60 backdrop-blur-md rounded-lg transition-all duration-300;
+      box-shadow: 0 2px 10px hsla(var(--primary)/0.1);
+  }
+  .tool-card:hover {
+      @apply -translate-y-1 border-primary/80;
+      box-shadow: 0 8px 30px hsla(var(--primary)/0.2), 0 0 20px hsla(var(--primary)/0.2);
+  }
+  .tool-icon {
+      @apply transition-all duration-300;
+  }
+  .tool-card:hover .tool-icon {
+      @apply scale-110 drop-shadow-[0_0_10px_hsl(var(--primary))];
+  }
+  .tool-badge {
+      @apply px-2 py-0.5 text-[0.65rem] font-bold rounded-md uppercase tracking-wider;
+  }
+  .tool-badge-expert {
+      @apply bg-red-500/20 text-red-300 border border-red-400/50;
+  }
+  .tool-badge-intermediate {
+      @apply bg-yellow-500/20 text-yellow-300 border border-yellow-400/50;
+  }
+  .tool-badge-beginner {
+      @apply bg-green-500/20 text-green-300 border border-green-400/50;
+  }
+  .glitch-animation {
+    animation: glitch 1.5s linear infinite;
+  }
+  .glitch-animation:before,
+  .glitch-animation:after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .glitch-animation:before {
+    left: 2px;
+    text-shadow: -2px 0 hsl(var(--accent));
+    animation: glitch-anim-1 2s linear infinite reverse;
+  }
+  .glitch-animation:after {
+    left: -2px;
+    text-shadow: -2px 0 hsl(var(--primary)), 2px 2px hsl(var(--accent));
+    animation: glitch-anim-2 2s linear infinite reverse;
+  }
+
+  @keyframes glitch-anim-1 {
+    0% { clip-path: inset(10% 0 90% 0); }
+    20% { clip-path: inset(80% 0 5% 0); }
+    40% { clip-path: inset(25% 0 50% 0); }
+    60% { clip-path: inset(95% 0 2% 0); }
+    80% { clip-path: inset(40% 0 20% 0); }
+    100% { clip-path: inset(70% 0 10% 0); }
+  }
+
+  @keyframes glitch-anim-2 {
+    0% { clip-path: inset(85% 0 5% 0); }
+    20% { clip-path: inset(15% 0 70% 0); }
+    40% { clip-path: inset(60% 0 30% 0); }
+    60% { clip-path: inset(5% 0 80% 0); }
+    80% { clip-path: inset(50% 0 15% 0); }
+    100% { clip-path: inset(90% 0 8% 0); }
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    25% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); }
+  }
+}
