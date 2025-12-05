@@ -90,7 +90,7 @@ export default function HeroSection() {
                     Resume
                     </Link>
                     <Link href="#projects" className="retro-button w-full sm:w-auto">
-                      View My Projects >>
+                      View My Projects {'>>'}
                     </Link>
                 </div>
 
