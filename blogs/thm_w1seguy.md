@@ -14,6 +14,7 @@ excerpt: "A clear step-by-step walkthrough of the TryHackMe W1seGuy room, demons
 **Difficulty:** Easy
 
 ---
+![w1seguy](https://tryhackme-images.s3.amazonaws.com/room-icons/9a13d8dcbd8940d14352ba2edbf66735.png)
 
 ## Introduction
 
